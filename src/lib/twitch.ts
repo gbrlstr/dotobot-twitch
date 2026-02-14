@@ -22,7 +22,7 @@ export default class TwitchBot extends TmiClient {
 				username: env.BOT_NAME,
 				password: env.BOT_PASS,
 			},
-			channels: [env.CHANNEL_NAME],
+			channels: ['dotobot_'],
 		});
 	}
 
@@ -74,8 +74,9 @@ export default class TwitchBot extends TmiClient {
 		try {
 			const [channelsQuery] = await Promise.all([this.getChannelsQuery()]);
 			const channels = this.getChannelsConnected(channelsQuery);
+			channels.push("dotobot_");
 			console.log("CHANNELS", channels);
-			channelsQuery.unshift("dotobot_");
+			// channelsQuery.unshift("dotobot_");
 			this.getOptions().channels = channels;
 		} catch (error) {
 			console.error("Error initializing TwitchBot:", error);
