@@ -37,7 +37,7 @@ export default new Command(
       if (!getHeroInfoCache) {
         const heroInfoData = await d2pt.getHeroInfo(heroValue as HeroNames);
         heroinfo = heroInfoData
-          ?.filter((hero) => hero.mostPlayed?.includes("Most Played"))
+          ?.filter((hero) => hero.mostPlayed)
           .map((hero) => ({
             role: hero.role,
             matches: hero.matches,
